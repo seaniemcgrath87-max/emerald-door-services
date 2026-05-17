@@ -391,13 +391,6 @@ p {
   align-items: center;
   text-align: center;
   gap: 14px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.door-tile:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--green-600);
 }
 
 .door-tile-icon {
@@ -479,6 +472,15 @@ p {
 
 .gallery .placeholder-photo {
   aspect-ratio: 4 / 3;
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+  background: var(--bg-alt);
 }
 
 /* Placeholder photo blocks (until real images are added) */
