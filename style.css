@@ -82,6 +82,24 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* ---------- Motion primitives ---------- */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    will-change: opacity, transform;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -354,6 +372,15 @@ p {
   backdrop-filter: saturate(140%) blur(10px);
   -webkit-backdrop-filter: saturate(140%) blur(10px);
   border-bottom: 1px solid var(--line-soft);
+  transition: box-shadow 0.3s var(--ease-out),
+              background-color 0.3s var(--ease-out),
+              border-color 0.3s var(--ease-out);
+}
+
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 6px 24px rgba(7, 36, 28, 0.07);
+  border-bottom-color: transparent;
 }
 
 .header-inner {
@@ -363,6 +390,17 @@ p {
   gap: 16px;
   padding-top: 14px;
   padding-bottom: 14px;
+  transition: padding 0.3s var(--ease-out);
+}
+
+.site-header.scrolled .header-inner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.site-header.scrolled .brand-mark-img {
+  width: 86px;
+  height: 86px;
 }
 
 .brand {
@@ -381,11 +419,15 @@ p {
   height: 108px;
   object-fit: contain;
   display: block;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s var(--ease-out),
+              width 0.3s var(--ease-out),
+              height 0.3s var(--ease-out);
 }
 
-.brand:hover .brand-mark-img {
-  transform: scale(1.04);
+@media (hover: hover) {
+  .brand:hover .brand-mark-img {
+    transform: scale(1.05) rotate(-2deg);
+  }
 }
 
 .site-nav {
@@ -403,16 +445,7 @@ p {
   position: relative;
 }
 
-.site-nav a:hover {
-  color: var(--green-800);
-  text-decoration: none;
-}
-
-.site-nav a[aria-current="page"] {
-  color: var(--green-800);
-}
-
-.site-nav a[aria-current="page"]::after {
+.site-nav a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -421,6 +454,28 @@ p {
   height: 2px;
   background: var(--brass);
   border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.site-nav a:hover {
+  color: var(--green-800);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .site-nav a:hover::after {
+    transform: scaleX(0.55);
+  }
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--green-800);
+}
+
+.site-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
 }
 
 .header-cta {
@@ -1300,13 +1355,34 @@ textarea {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Icon-only phone CTA on phones to keep header tidy next to the bigger logo */
   .header-cta {
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    gap: 0;
+  }
+
+  .header-cta .header-cta-text {
     display: none;
+  }
+
+  .header-cta .btn-icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
   }
 
   .brand-mark-img {
     width: 80px;
     height: 80px;
+  }
+
+  .site-header.scrolled .brand-mark-img {
+    width: 66px;
+    height: 66px;
   }
 
   .form-row-split {
@@ -1337,5 +1413,142 @@ textarea {
   .trust-strip-inner {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+}
+
+/* ---------- Hover refinements + entrance animations ---------- */
+
+/* Hero entrance — staggered fade up on page load */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero .eyebrow,
+  .hero h1,
+  .hero .lead,
+  .hero .cta-row,
+  .hero-points {
+    opacity: 0;
+    animation: heroFadeUp 0.85s var(--ease-out) forwards;
+  }
+
+  .hero .eyebrow   { animation-delay: 0.10s; }
+  .hero h1         { animation-delay: 0.22s; }
+  .hero .lead      { animation-delay: 0.36s; }
+  .hero .cta-row   { animation-delay: 0.50s; }
+  .hero-points     { animation-delay: 0.62s; }
+}
+
+/* Service card — soft photo overlay reveals on hover */
+.service-card-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(7, 36, 28, 0.55) 100%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .service-card:hover .service-card-photo::after {
+    opacity: 1;
+  }
+}
+
+/* Recent-work teaser — subtle darken on hover */
+.work-teaser a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(7, 36, 28, 0.32) 0%, rgba(7, 36, 28, 0) 60%);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .work-teaser a:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Projects slider — gentle scale on photo hover (desktop only) */
+.slider-track img {
+  transition: transform 0.45s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .slider-track img:hover {
+    transform: scale(1.025);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* Door tiles — subtle border warm-up on hover (informational, no lift) */
+@media (hover: hover) {
+  .door-tile {
+    transition: border-color 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
+  }
+  .door-tile:hover {
+    border-color: var(--brass-soft);
+  }
+  .door-tile:hover .door-tile-icon {
+    background: var(--green-700);
+    color: #fff;
+    transition: background-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+  }
+}
+
+/* Footer link hover — underline draws from left */
+.site-footer a {
+  position: relative;
+  display: inline-block;
+}
+
+.site-footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--brass);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .site-footer a:hover::after {
+    transform: scaleX(1);
+  }
+  .site-footer a:hover {
+    border-bottom-color: transparent;
+  }
+}
+
+/* Reduced-motion override — disables all animations and transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .hero .eyebrow,
+  .hero h1,
+  .hero .lead,
+  .hero .cta-row,
+  .hero-points {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }
