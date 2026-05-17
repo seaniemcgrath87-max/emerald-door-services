@@ -375,6 +375,53 @@ p {
   margin-bottom: 0;
 }
 
+/* Door Types tiles (3x3 grid of door categories) */
+.door-types-grid {
+  gap: 20px;
+}
+
+.door-tile {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.door-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--green-600);
+}
+
+.door-tile-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--green-50);
+  color: var(--green-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.door-tile-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.door-tile h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--ink);
+}
+
 .feature {
   background: #fff;
   border: 1px solid var(--line);
