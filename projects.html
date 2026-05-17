@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recent Projects | Emerald Door Services</title>
   <meta name="description" content="A selection of recent door installation and repair projects by Emerald Door Services in Colorado Springs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -23,7 +26,10 @@
         <a href="contact.html">Contact</a>
       </nav>
 
-      <a href="tel:+17204362411" class="btn btn-primary btn-sm header-cta">Call (720) 436-2411</a>
+      <a href="tel:+17204362411" class="btn btn-primary btn-sm header-cta">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+        (720) 436-2411
+      </a>
     </div>
   </header>
 
@@ -33,10 +39,10 @@
     <section class="page-header">
       <div class="container">
         <p class="eyebrow">Recent Work</p>
-        <h1>A Look at Our Recent Projects</h1>
+        <h1>A look at our recent projects</h1>
         <p class="lead">
-          A selection of recent door installations and repairs.
-          Swipe or use the arrows to browse.
+          A selection of recent door installations and repairs from across the
+          Colorado Springs area. Swipe or use the arrows to browse.
         </p>
       </div>
     </section>
@@ -87,21 +93,24 @@
           </button>
         </div>
 
-        <p class="slider-hint muted">Tip: swipe on a phone, or click the arrows on desktop.</p>
+        <p class="slider-hint muted">Swipe on a phone, or click the arrows on desktop.</p>
       </div>
     </section>
 
     <!-- ============ CONTACT CTA ============ -->
-    <section class="section section-alt contact-cta">
+    <section class="contact-cta">
       <div class="container">
         <div class="cta-band">
           <div>
             <h2>Have a project in mind?</h2>
-            <p>Tell us what you&rsquo;re working with and we&rsquo;ll get back to you.</p>
+            <p>Tell us what you&rsquo;re working with and we&rsquo;ll get back to you the same day.</p>
           </div>
           <div class="cta-row">
-            <a href="tel:+17204362411" class="btn btn-primary">Call Now</a>
-            <a href="contact.html" class="btn btn-secondary">Request a Quote</a>
+            <a href="tel:+17204362411" class="btn btn-on-photo">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+              Call (720) 436-2411
+            </a>
+            <a href="contact.html" class="btn btn-on-photo btn-secondary-on-photo">Request a Quote</a>
           </div>
         </div>
       </div>
@@ -111,17 +120,24 @@
 
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <p class="brand-name">Emerald Door Services</p>
-        <p class="muted">Door installation &amp; repair for Colorado Springs and surrounding areas.</p>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <p class="brand-name">Emerald Door Services</p>
+          <p class="muted">Door installation &amp; repair for Colorado Springs and surrounding areas.</p>
+        </div>
+        <div>
+          <p><a href="tel:+17204362411">(720) 436-2411</a></p>
+          <p><a href="mailto:irishfinecarpentry@gmail.com">irishfinecarpentry@gmail.com</a></p>
+        </div>
+        <div class="muted">
+          <p>Licensed &amp; insured</p>
+          <p>Locally owned</p>
+        </div>
       </div>
-      <div>
-        <p><a href="tel:+17204362411">(720) 436-2411</a></p>
-        <p><a href="mailto:irishfinecarpentry@gmail.com">irishfinecarpentry@gmail.com</a></p>
-      </div>
-      <div class="muted">
+      <div class="footer-bottom">
         <p>&copy; <span class="year">2026</span> Emerald Door Services. All rights reserved.</p>
+        <p><a href="contact.html">Contact</a> &middot; <a href="services.html">Services</a> &middot; <a href="projects.html">Projects</a></p>
       </div>
     </div>
   </footer>
@@ -140,8 +156,6 @@
       if (!track || !prev || !next) return;
 
       function step() {
-        // Scroll by ~90% of the visible width so a tiny bit of the next image is visible
-        // when the user reaches the end of a scroll.
         return Math.max(200, track.clientWidth * 0.9);
       }
 
@@ -152,7 +166,6 @@
         track.scrollBy({ left: step(), behavior: "smooth" });
       });
 
-      // Update button visibility based on scroll position.
       function updateButtons() {
         var maxScroll = track.scrollWidth - track.clientWidth - 1;
         prev.disabled = track.scrollLeft <= 0;
