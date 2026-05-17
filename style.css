@@ -377,8 +377,8 @@ p {
 }
 
 .brand-mark-img {
-  width: 72px;
-  height: 72px;
+  width: 108px;
+  height: 108px;
   object-fit: contain;
   display: block;
   transition: transform 0.2s ease;
@@ -1305,8 +1305,8 @@ textarea {
   }
 
   .brand-mark-img {
-    width: 58px;
-    height: 58px;
+    width: 80px;
+    height: 80px;
   }
 
   .form-row-split {
