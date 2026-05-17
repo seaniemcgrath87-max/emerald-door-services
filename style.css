@@ -251,10 +251,15 @@ p {
 }
 
 .brand-mark-img {
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
   display: block;
+  transition: transform 0.15s ease;
+}
+
+.brand:hover .brand-mark-img {
+  transform: scale(1.04);
 }
 
 .brand-text {
@@ -287,6 +292,22 @@ p {
 .site-nav a:hover {
   color: var(--green-700);
   text-decoration: none;
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--green-700);
+  position: relative;
+}
+
+.site-nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--green-600);
+  border-radius: 2px;
 }
 
 /* ---------- 6. Hero ---------- */
@@ -639,6 +660,149 @@ textarea {
   align-items: start;
 }
 
+/* ---------- 9b. Page header (sub-pages) ---------- */
+.page-header {
+  background: linear-gradient(180deg, var(--green-50) 0%, #ffffff 100%);
+  padding: 64px 0 32px;
+}
+
+.page-header h1 {
+  margin-bottom: 0.4em;
+}
+
+.page-header .lead {
+  margin-bottom: 0;
+}
+
+/* ---------- 9c. Section footer (link below a grid) ---------- */
+.section-foot {
+  text-align: center;
+  margin: 40px 0 0;
+}
+
+/* ---------- 9d. Contact CTA band ---------- */
+.contact-cta {
+  padding: 56px 0;
+}
+
+.cta-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.cta-band h2 {
+  margin-bottom: 4px;
+  font-size: 1.6rem;
+}
+
+.cta-band p {
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.cta-band .cta-row {
+  margin: 0;
+}
+
+/* ---------- 9e. Projects horizontal slider ---------- */
+.projects-slider {
+  position: relative;
+  margin: 0 -8px;
+}
+
+.slider-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 4px 8px 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-track:focus {
+  outline: none;
+}
+
+.slider-track img {
+  flex: 0 0 auto;
+  width: 380px;
+  height: 285px;
+  object-fit: cover;
+  scroll-snap-align: start;
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  box-shadow: var(--shadow-sm);
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  z-index: 5;
+  transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+  padding: 0;
+}
+
+.slider-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.slider-btn:hover {
+  background: var(--green-50);
+  color: var(--green-700);
+}
+
+.slider-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.slider-btn:disabled:hover {
+  background: #fff;
+  color: var(--ink);
+}
+
+.slider-prev {
+  left: -22px;
+}
+
+.slider-next {
+  right: -22px;
+}
+
+.slider-hint {
+  text-align: center;
+  margin-top: 16px;
+}
+
 /* ---------- 10. Responsive tweaks ---------- */
 @media (max-width: 900px) {
   .hero-inner,
@@ -658,6 +822,25 @@ textarea {
   .footer-inner {
     grid-template-columns: 1fr;
   }
+
+  .slider-track img {
+    width: 300px;
+    height: 225px;
+  }
+
+  .slider-prev {
+    left: 4px;
+  }
+
+  .slider-next {
+    right: 4px;
+  }
+
+  .cta-band {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -669,12 +852,21 @@ textarea {
     padding: 48px 0 40px;
   }
 
+  .page-header {
+    padding: 40px 0 24px;
+  }
+
   .grid-3 {
     grid-template-columns: 1fr;
   }
 
   .header-cta {
     display: none; /* Keep header very tidy on small phones */
+  }
+
+  .brand-mark-img {
+    width: 56px;
+    height: 56px;
   }
 
   .brand-tag {
@@ -688,5 +880,17 @@ textarea {
   .contact-list li {
     grid-template-columns: 1fr;
     gap: 2px;
+  }
+
+  .slider-track img {
+    width: 78vw;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .slider-btn {
+    width: 40px;
+    height: 40px;
   }
 }

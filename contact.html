@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Emerald Door Services</title>
+  <meta name="description" content="Get in touch with Emerald Door Services for door installation, door repair, and commercial door services in Colorado Springs and surrounding areas." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Emerald Door Services home">
+        <img src="Emerald-Door-Services.jpg" alt="Emerald Door Services logo" class="brand-mark-img" />
+        <span class="brand-text">
+          <span class="brand-name">Emerald Door Services</span>
+          <span class="brand-tag">Colorado Springs &amp; surrounding areas</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+
+      <a href="tel:+17204362411" class="btn btn-primary btn-sm header-cta">Call (720) 436-2411</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ PAGE HEADER ============ -->
+    <section class="page-header">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Get in Touch</h1>
+        <p class="lead">
+          Call, email, or send a quick message and we&rsquo;ll get back to you.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section">
+      <div class="container contact-inner">
+
+        <div class="contact-info">
+          <h2>How to Reach Us</h2>
+          <p>Prefer to call? We&rsquo;re happy to chat through what you need.</p>
+
+          <ul class="contact-list">
+            <li>
+              <strong>Phone</strong>
+              <a href="tel:+17204362411">(720) 436-2411</a>
+            </li>
+            <li>
+              <strong>Email</strong>
+              <a href="mailto:irishfinecarpentry@gmail.com">irishfinecarpentry@gmail.com</a>
+            </li>
+            <li>
+              <strong>Service Area</strong>
+              <span>Colorado Springs &amp; surrounding areas</span>
+            </li>
+          </ul>
+
+          <div class="cta-row">
+            <a href="tel:+17204362411" class="btn btn-primary">Call Now</a>
+            <a href="mailto:irishfinecarpentry@gmail.com" class="btn btn-secondary">Email Us</a>
+          </div>
+        </div>
+
+        <!--
+          Netlify Forms ready:
+          - name="contact" tells Netlify which form this is
+          - data-netlify="true" turns on form handling once deployed to Netlify
+          - the hidden "form-name" input is required by Netlify
+          - the "bot-field" honeypot helps filter spam
+        -->
+        <form
+          class="contact-form"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+
+          <p class="hp-field">
+            <label>Don&rsquo;t fill this out if you&rsquo;re human: <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-row form-row-split">
+            <div>
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="Door Installation">Door Installation</option>
+              <option value="Door Repair">Door Repair</option>
+              <option value="Commercial Door Services">Commercial Door Services</option>
+              <option value="Other">Other / Not sure</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us a little about the job..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Request a Quote</button>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="brand-name">Emerald Door Services</p>
+        <p class="muted">Door installation &amp; repair for Colorado Springs and surrounding areas.</p>
+      </div>
+      <div>
+        <p><a href="tel:+17204362411">(720) 436-2411</a></p>
+        <p><a href="mailto:irishfinecarpentry@gmail.com">irishfinecarpentry@gmail.com</a></p>
+      </div>
+      <div class="muted">
+        <p>&copy; <span class="year">2026</span> Emerald Door Services. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".year").forEach(function (el) {
+      el.textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
